@@ -1,5 +1,5 @@
 FROM ubuntu:18.04
-MAINTAINER uli.hitzel@gmail.com
+MAINTAINER hflocki78@gmail.com
 EXPOSE 8080 5901
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Europe/Berlin
