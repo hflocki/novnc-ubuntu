@@ -1,5 +1,6 @@
 # Ubuntu NoVNC Desktop
 
+Forked from https://github.com/u1i/ubuntu-novnc/tree/master
 An Ubuntu 18.04 Desktop in a Docker container, running
 
 * Xfce4
