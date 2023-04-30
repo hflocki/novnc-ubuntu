@@ -22,7 +22,7 @@ COPY config /home/user
 RUN chown -R user:user /home/user
 
 #WORKDIR /tmp
-RUN apt-get -y install gedit vim nano
+RUN apt-get -y install gedit nano
 USER user
 
 WORKDIR /.novnc
@@ -40,8 +40,21 @@ RUN apt-get install -y software-properties-common
 RUN apt-add-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ bionic main'
 RUN apt-get update
 RUN apt-get install -y --install-recommends wine1.6 
-RUN apt-get install -y winetricks
 
+# install gecko
+RUN mkdir -p /usr/share/wine/gecko \
+		&& curl -SL http://dl.winehq.org/wine/wine-gecko/2.40/wine_gecko-2.40-x86.msi -o /usr/share/wine/gecko/wine_gecko-2.40-x86.msi \
+		&& curl -SL http://dl.winehq.org/wine/wine-gecko/2.40/wine_gecko-2.40-x86_64.msi -o /usr/share/wine/gecko/wine_gecko-2.40-x86_64.msi \
+		&& chmod +x /usr/share/wine/gecko/*.msi \
+# install mono
+&&  mkdir -p /usr/share/wine/mono \
+		&& curl -SL 'http://sourceforge.net/projects/wine/files/Wine%20Mono/4.5.6/wine-mono-4.5.6.msi/download' -o /usr/share/wine/mono/wine-mono-4.5.6.msi\
+		&& chmod +x /usr/share/wine/mono/wine-mono-4.5.6.msi \
+# install winetricks
+	&& curl -SL 'https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks' -o /usr/local/bin/winetricks \
+		&& chmod +x /usr/local/bin/winetricks \
+# cleanup
+	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 WORKDIR /home/user
 
