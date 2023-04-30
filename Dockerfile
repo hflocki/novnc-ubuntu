@@ -45,6 +45,7 @@ RUN apt-get update
 RUN apt-get install -y --install-recommends wine1.6 
 RUN apt-get install -y winetricks
 
+
 WORKDIR /home/user
 
 CMD ["sh","/start.sh"]
