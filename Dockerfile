@@ -42,7 +42,8 @@ RUN wget -qO - https://dl.winehq.org/wine-builds/winehq.key | apt-key add -
 RUN apt-get install -y software-properties-common
 RUN apt-add-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ bionic main'
 RUN apt-get update
-RUN apt-get install -y --install-recommends winehq-stable mono-complete
+RUN apt-get install -y --install-recommends wine1.6 
+RUN apt-get install -y mono-complete
 
 WORKDIR /home/user
 
