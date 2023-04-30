@@ -22,10 +22,7 @@ COPY config /home/user
 RUN chown -R user:user /home/user
 
 #WORKDIR /tmp
-#RUN wget https://github.com/atom/atom/releases/download/v1.48.0/atom-amd64.deb
-#RUN apt-get -y install gvfs-bin
-#RUN dpkg -i atom-amd64.deb
-RUN apt-get -y install gedit vim
+RUN apt-get -y install gedit vim nano
 USER user
 
 WORKDIR /.novnc
